@@ -1,0 +1,191 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root {
+  --bg-1: linear-gradient(45deg, rgb(65, 89, 208) 0%, rgb(200, 79, 192) 50%, rgb(255, 205, 112) 100%);
+  --bg-2: linear-gradient(45deg, rgb(7, 174, 234) 0%, rgb(42, 243, 221) 50%, rgb(43, 245, 152) 100%);
+  --bg-3: linear-gradient(45deg, rgb(250, 218, 97) 0%, rgb(255, 145, 136) 50%, rgb(255, 90, 205) 100%);
+  --bg-4: linear-gradient(45deg, rgb(35, 212, 253) 0%, rgb(58, 152, 240) 50%, rgb(183, 33, 255) 100%);
+  --bg-5: linear-gradient(45deg, rgb(250, 97, 218) 0%, rgb(255, 136, 145) 50%, rgb(255, 205, 90) 100%);
+  --bg-6: linear-gradient(45deg, rgb(53, 129, 221) 0%, rgb(162, 255, 255) 50%, rgb(253, 255, 164) 100%);
+  --bg-7: linear-gradient(45deg, rgb(217, 179, 226) 0%, rgb(157, 84, 213) 50%, rgb(82, 44, 164) 100%);
+  --bg-8: linear-gradient(45deg, rgb(65, 94, 208) 0%, rgb(121, 113, 219) 50%, rgb(216, 134, 230) 100%);
+  --bg-9: linear-gradient(45deg, rgb(68, 202, 255) 0%, rgb(223, 50, 198) 50%, rgb(255, 102, 63) 100%);
+}
+
+body {
+  --speed: 6000;
+  --current-bg: var(--bg-8);
+  --previous-bg: var(--bg-8);
+  background: var(--current-bg);
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.change-background {
+    &::before {
+      animation: change-background var(--speed) ease-in-out;
+      background: var(--previous-bg);
+      content: '';
+      height: 100%;
+      left: 0;
+      opacity: 0;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      z-index: 0;
+    }
+  }
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
+  height: 100vh;
+  place-items: center;
+  width: 100vw;
+}
+
+/* code frame */
+[data-theme="nuxt"] {
+    --frame: #292d3e;
+    --header: #313546;
+}
+[data-theme="nuxt-contrast"] {
+  --frame: #222534;
+  --header: #7e95c021;
+}
+[data-theme="vue"] {
+  --frame: #24292e;
+  --header: #2c3136
+}
+[data-theme="shapes"] {
+  --frame: #282c34;
+  --header: #30343c;
+}
+
+.frame {
+  --red: #ff5f57;
+  --yellow: #febc2e;
+  --green: #28c840;
+  background-color: var(--frame);
+  border: 2px solid rgb(51, 65, 85);
+  border-radius: 0.625rem;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  display: grid;
+  opacity: 1;
+  overflow: hidden;
+  position: relative;
+  transform: scale(1) perspective(700px) rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+
+  height: max-content;
+  width: max-content;
+
+  min-height: 24rem;
+  min-width: 36rem;
+
+  max-height: 40rem;
+  max-width: 40rem;
+
+  z-index: 2;
+
+  box-shadow: 0 0 40px 0 #0000004e;
+}
+
+.header {
+  align-items: center;
+  background-color: var(--header);
+  box-sizing: border-box;
+  color: #9ca2ad;
+  display: grid;
+  font-family: Inter, sans-serif;
+  gap: 1rem;
+  grid-template-columns: 3.75rem 1fr 3.75rem;
+  height: 2.5rem;
+  padding: 0 1.25rem;
+  position: relative;
+  width: 100%;
+  z-index: 1;
+
+  .title {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .buttons {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+
+    .button {
+      background-color: var(--yellow);
+      border-radius: 50%;
+      height: 13px;
+      width: 13px;
+
+      &:first-child {
+        background-color: var(--red);
+      }
+      &:last-child {
+        background-color: var(--green);
+      }
+    }
+  }
+}
+
+.body {
+  height: 100%;
+  padding: 0.5rem 0;
+  position: relative;
+  z-index: 1;
+
+  .code {
+    border: 0;
+    font-family: MonaLisa, monospace;
+    font-size: 0.875rem;
+    height: 100%;
+    line-height: 1.5;
+
+    pre {
+      background: transparent !important;
+      color: #babed8;
+      margin: 0;
+
+      code {
+        background: transparent;
+        margin: 0;
+      }
+    }
+  }
+
+  .mask {
+    background: transparent;
+    border: none;
+    font-family: MonaLisa, monospace;
+    font-size: 0.875rem;
+    height: calc(100% - 40px);
+    line-height: 1.5;
+    opacity: 0;
+    outline: none;
+    position: absolute;
+    resize: none;
+    width: calc(100% - 48px);
+    z-index: 1;
+  }
+}
+
+monaco-editor .monaco-editor {
+  --vscode-editor-background: transparent !important;
+  --vscode-editorGutter-background: transparent !important;
+}
+
+@keyframes change-background {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
