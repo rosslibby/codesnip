@@ -9,13 +9,17 @@ module.exports = {
       {
         test: /\.ts$/,
         exclude: /node_modules/,
-        resolve: { extensions: ['.ts'] },
+        use: ['ts-loader'],
       },
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
     ],
+  },
+  resolve: {
+    extensions: ['.ts', '.js'],
+    conditionNames: ['import', 'module', 'browser', 'default'],
   },
   devtool: 'source-map',
   plugins: [
