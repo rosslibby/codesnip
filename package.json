@@ -23,5 +23,8 @@
     "style:watch": "sass --watch src/styles:dist/css",
     "serve": "webpack serve",
     "dev": "concurrently \"npm run style:watch\" \"npm run serve\""
+  },
+  "dependencies": {
+    "modern-monaco": "^0.2.1"
   }
 }
