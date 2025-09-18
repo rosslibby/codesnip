@@ -15,5 +15,13 @@
     "webpack": "^5.101.3",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.2"
+  },
+  "scripts": {
+    "bundle": "webpack",
+    "style": "sass src/styles:dist/css",
+    "build": "npm run style && npm run bundle",
+    "style:watch": "sass --watch src/styles:dist/css",
+    "serve": "webpack serve",
+    "dev": "concurrently \"npm run style:watch\" \"npm run serve\""
   }
 }
