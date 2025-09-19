@@ -1,15 +1,15 @@
-import * as monaco from 'modern-monaco';
-import { cycleBackground } from './background';
+import { lazy, Workspace } from 'modern-monaco';
+import { background } from './background';
 import { renderDOM } from './dom';
 
 async function createWorkspace() {
-  const workspace = new monaco.Workspace({
+  const workspace = new Workspace({
     initialFiles: {
       'index.ts': 'const greeting = \'Hello, World!\';\n',
     },
     entryFile: 'index.ts',
   });
-  await monaco.lazy({ workspace }).then(() => {
+  await lazy({ workspace }).then(() => {
     // add editor dom
     renderDOM();
     const container = document.getElementById('workspace-container') as HTMLDivElement;
@@ -20,8 +20,11 @@ async function createWorkspace() {
 }
 
 function init() {
-  cycleBackground();
+  background();
   createWorkspace();
 }
 
-init();
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('dom content loaded ✅')
+  init();
+});
