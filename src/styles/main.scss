@@ -75,6 +75,8 @@ body {
   border-radius: 0.625rem;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: grid;
+  gap: 0.5rem;
+  grid-template-rows: 2.5rem calc(46rem - 3rem);
   opacity: 1;
   overflow: hidden;
   position: relative;
@@ -86,8 +88,9 @@ body {
   min-height: 24rem;
   min-width: 36rem;
 
-  max-height: 40rem;
-  max-width: 40rem;
+  max-height: 46rem;
+  max-width: 64rem;
+  width: 100%;
 
   z-index: 2;
 
@@ -137,7 +140,6 @@ body {
 
 .body {
   height: 100%;
-  padding: 0.5rem 0;
   position: relative;
   z-index: 1;
 

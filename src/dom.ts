@@ -63,5 +63,7 @@ const tree: DomTreeNode = {
 
 export function renderDOM() {
   const root = document.body;
-  root.appendChild(domFromTree(tree));
+  if (root.innerHTML.trim() === '') {
+    root.appendChild(domFromTree(tree));
+  }
 }

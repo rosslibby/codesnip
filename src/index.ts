@@ -9,19 +9,13 @@ async function createWorkspace() {
     },
     entryFile: 'index.ts',
   });
-  await lazy({ workspace }).then(() => {
-    // add editor dom
-    renderDOM();
-    const container = document.getElementById('workspace-container') as HTMLDivElement;
-    const workspaceEl = document.createElement('monaco-editor');
-    workspaceEl.setAttribute('theme', 'github-dark');
-    container.appendChild(workspaceEl);
-  });
+  await lazy({ workspace });
 }
 
 function init() {
   background();
   createWorkspace();
+  renderDOM();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
