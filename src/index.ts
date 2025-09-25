@@ -16,6 +16,11 @@ function init() {
   background();
   createWorkspace();
   renderDOM();
+  const frame = document.querySelector('.frame') as HTMLDivElement;
+  window.addEventListener('resize', () => {
+    frame.style.setProperty('--maxWidth', window.innerWidth * .9 + 'px');
+    frame.style.setProperty('--width', window.innerWidth * .9 + 'px');
+  });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
